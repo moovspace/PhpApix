@@ -12,8 +12,8 @@
     },
     "autoload": {
         "psr-4": {
-		"PhpApix\\": "src/"
-	},
+            "PhpApix\\": "src/"
+        },
         "classmap": [
             "src/"
         ]
