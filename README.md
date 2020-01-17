@@ -40,7 +40,8 @@ use PhpApix\Api\Sample\Email;
 // Class controller
 class SampleClass extends MysqlConnect
 {
-	function Index($router){
+	function Index($router)
+	{
 		echo "My new page class Index method works!";
 		
 		try
