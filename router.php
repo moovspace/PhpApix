@@ -1,6 +1,4 @@
 <?php
-require ("error.php");
-
 use PhpApix\Router\Router;
 
 try

@@ -1,1 +1,4 @@
-<?php require('router.php'); ?>
+<?php 
+require("error.php");
+require('router.php'); 
+?>

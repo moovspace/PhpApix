@@ -3,7 +3,7 @@ RewriteBase /
 
 # Redirect to /
 RewriteCond %{REQUEST_FILENAME} index.php
-RewriteRule ^index.php$ http://%{HTTP_HOST}/ [R=301,L]
+RewriteRule ^(.*)index.php$ /$1 [R=301,L] 
 
 # Display already existing files and folders
 RewriteCond %{REQUEST_FILENAME} -d [OR]
@@ -15,7 +15,7 @@ RewriteRule (.*) $1 [NC,QSA,L]
 RewriteRule ^favicon\.ico$ /favicon/favicon.ico [L]
 
 # Rewrite all urls
-RewriteRule ^(.*)/?$ router.php?url=$1 [NC,L,QSA]
+RewriteRule ^(.*)/?$ index.php?url=$1 [NC,L,QSA]
 
 # Rewrite only pretty urls /ddd/ddd/ddd/...
 # RewriteRule ^([A-Za-z0-9-_/{1}]+)/?$ index.php?url=$1 [NC,L,QSA]

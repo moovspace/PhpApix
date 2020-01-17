@@ -96,33 +96,38 @@ class Email
 nano router.php
 ```php
 <?php
-require ("error.php");
-
 use PhpApix\Router\Router;
 
 try
 {
-	// Create router
-	$r = new Router();
+    // Create router
+    $r = new Router();
 
-	// Clear all routes
-	$r->Clear();
+    // Clear all routes
+    $r->Clear();
 
-	// Home page url: /index
+    /* ROUTES */
+
+    // Home page /index
     $r->Set ("/index", "Api/Home/Home", "Index");
 
-	// Add routes
-	$r->Set("/welcome/email/{id}", "Api/Sample/SampleClass", "Index");
+    // Error page /error404
+    $r->Set ("/error404", "Api/Error/ErrorPage", "Error404");
 
-	// Next route	
-	// $r->Set ("/user/{userid}/blog", "Api/User/Profil", "Blog");
+    // Add route: url, class path, class method
+    $r->Set("/welcome/email/{id}", "Api/Sample/SampleClass", "Index");
+    
+    // Route with custom method
+    // $r->Set ("/user/{userid}/blog", "Api/User/Profil", "Blog");
 
-	// Run router
-	$r->Init();
+    /* END ROUTES */
+
+    // Run router
+    $r->Init();
 }
 catch (Exception $e)
 {	
-	$e->getMessage();
+    $e->getMessage();
 }
 ?>
 ```

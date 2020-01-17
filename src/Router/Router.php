@@ -7,8 +7,7 @@ class Router
 	protected $Routes = array();
 
 	function __construct ()
-	{
-		// echo "Router working...loading routes!";
+	{		
 		$this->Routes = $_SESSION['Routes'];
 	}
 
