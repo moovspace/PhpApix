@@ -27,7 +27,7 @@ mysql -u root -p < sql/user.sql
 mkdir -p src/Api/Sample
 ```
 
-## Route controller class (without namespace)
+## Route controller class **(without namespace)**
 nano src/Api/Sample/SampleClass.php
 ```php
 <?php
@@ -66,7 +66,7 @@ class SampleClass extends MysqlConnect
 ?>
 ```
 
-## Custom class for controller (with namespace)
+## Custom class for controller **(with namespace)**
 nano src/Api/Sample/Email.php
 ```php
 <?php
