@@ -18,7 +18,7 @@ composer dump-autoload -o
 # create db
 mysql -u root -p < sql/phpapix.sql
 
-# cretae db user
+# create db user
 mysql -u root -p < sql/user.sql
 ```
 
