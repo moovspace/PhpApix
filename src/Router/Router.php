@@ -95,7 +95,7 @@ class Router
 
 		$url = trim($url);
 		$url = rtrim($url, '/');
-		if(empty($url) || $url == '/'){ $url = 'Index'; }
+		if(empty($url) || $url == '/'){ $url = '/index'; }
 
 		foreach ($this->Routes as $k => $v)
 		{

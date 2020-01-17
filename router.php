@@ -11,10 +11,12 @@ try
     // Clear all routes
     $r->Clear();
 
-    // Add routes
-	$r->Set("/welcome/email/{id}", "Api/Sample/SampleClass", "Index");
+    // Home page name: /index
+    $r->Set ("/index", "Api/Home/Home", "Index");
 
-    // $r->Set ("/about", "Api/About", "Index");
+    // Add route: (url, class path, class method) default method name: Index
+    $r->Set("/welcome/email/{id}", "Api/Sample/SampleClass", "Index");
+    
     // $r->Set ("/user/{userid}/blog", "Api/User/Profil", "Blog");
 
     // Run router
