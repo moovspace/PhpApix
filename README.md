@@ -27,7 +27,7 @@ mysql -u root -p < sql/user.sql
 mkdir -p src/Api/Sample
 ```
 
-# Create Controller Class
+## Route controller class
 nano src/Api/Sample/SampleClass.php
 ```php
 <?php
@@ -66,7 +66,7 @@ class SampleClass extends MysqlConnect
 ?>
 ```
 
-### Create send email class for controller
+## Custom class for controller
 nano src/Api/Sample/Email.php
 ```php
 <?php
@@ -92,7 +92,7 @@ class Email
 ?>
 ```
 
-### Add new route
+## Rotes file
 nano router.php
 ```php
 <?php
