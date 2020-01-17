@@ -5,7 +5,7 @@ class Config
 {
 	// Mysql db
 	const MYSQL_HOST = 'localhost';
-	const MYSQL_USER = 'root';
+	const MYSQL_USER = 'phpapix';
 	const MYSQL_PASS = 'toor';
 	const MYSQL_PORT = 3306;
 	const MYSQL_DBNAME = 'phpapix';

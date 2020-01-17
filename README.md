@@ -13,6 +13,15 @@ composer update
 composer dump-autoload -o
 ```
 
+### Import mysql database
+```bash
+# create db
+mysql -u root -p < sql/phpapix.sql
+
+# cretae db user
+mysql -u root -p < sql/user.sql
+```
+
 ### Create Api controller class path
 ```bash
 mkdir -p src/Api/Sample
