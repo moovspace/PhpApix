@@ -1,6 +1,6 @@
 <?php
-/* Your class PhpApi namespace !!! */
-namespace PhpApi\Api\Sample;
+/* Your class PhpApix namespace !!! */
+namespace PhpApix\Api\Sample;
 
 // Import classes
 use \Exception;

@@ -1,7 +1,5 @@
 <?php
-namespace PhpApi\Router;
-
-use PhpApi\Router\Route;
+namespace PhpApix\Router;
 use \Exception;
 
 class Router

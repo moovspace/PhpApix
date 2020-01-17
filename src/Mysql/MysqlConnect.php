@@ -1,9 +1,9 @@
 <?php
-namespace PhpAPi\Mysql;
+namespace PhpApix\Mysql;
 
 use \PDO;
 use \Exception;
-use PhpApi\Settings\Config;
+use PhpApix\Settings\Config;
 
 class MysqlConnect extends Config
 {

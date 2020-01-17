@@ -1,7 +1,7 @@
 <?php
 require ("error.php");
 
-use PhpApi\Router\Router;
+use PhpApix\Router\Router;
 
 try
 {
@@ -13,7 +13,7 @@ try
 
     // Add routes
 	$r->Set("/welcome/email/{id}", "Api/Sample/SampleClass", "Index");
-    
+
     // $r->Set ("/about", "Api/About", "Index");
     // $r->Set ("/user/{userid}/blog", "Api/User/Profil", "Blog");
 

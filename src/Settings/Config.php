@@ -1,5 +1,5 @@
 <?php
-namespace PhpApi\Settings;
+namespace PhpApix\Settings;
 
 class Config
 {

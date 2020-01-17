@@ -2,10 +2,10 @@
 /* Controller class without namespace !!! */
 
 // Import mysql pdo class
-use PhpApi\Mysql\MysqlConnect;
+use PhpApix\Mysql\MysqlConnect;
 
 // Import your email class
-use PhpApi\Api\Sample\Email;
+use PhpApix\Api\Sample\Email;
 
 // Class controller
 class SampleClass extends MysqlConnect

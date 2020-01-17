@@ -1,4 +1,4 @@
-# PhpApi
+# PhpApix
 Php api router class
 
 ### Clone repo or download last release
@@ -23,10 +23,10 @@ nano src/Api/Sample/SampleClass.php
 ```php
 <?php
 // Import mysql pdo class
-use PhpApi\Mysql\MysqlConnect;
+use PhpApix\Mysql\MysqlConnect;
 
 // Import your class
-use PhpApi\Api\Sample\Email;
+use PhpApix\Api\Sample\Email;
 
 // Class controller
 class SampleClass extends MysqlConnect
@@ -60,8 +60,8 @@ class SampleClass extends MysqlConnect
 nano src/Api/Sample/Email.php
 ```php
 <?php
-// PhpApi namespace
-namespace PhpApi\Api\Sample;
+// PhpApix namespace
+namespace PhpApix\Api\Sample;
 
 // Import classes
 use \Exception;
@@ -88,7 +88,7 @@ nano router.php
 <?php
 require ("error.php");
 
-use PhpApi\Router\Router;
+use PhpApix\Router\Router;
 
 try
 {
