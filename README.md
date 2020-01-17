@@ -49,9 +49,9 @@ class SampleClass extends MysqlConnect
 			$params = $router->GetParams($_SERVER['REQUEST_URI']);
 
 			// Mysql pdo sample			
-            $r = $this->Pdo->prepare("SELECT * FROM users WHERE id != :id");
-            $r->execute([':id' => 0]);
-            $rows = $r->fetchAll (); // Get rows
+			$r = $this->Pdo->prepare("SELECT * FROM users WHERE id != :id");
+			$r->execute([':id' => 0]);
+			$rows = $r->fetchAll (); // Get rows
 
 			// Use Your class sample
 			$e = new Email();
