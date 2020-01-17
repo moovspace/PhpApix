@@ -116,9 +116,6 @@ try
 
     // Add route: url, class path, class method
     $r->Set("/welcome/email/{id}", "Api/Sample/SampleClass", "Index");
-    
-    // Route with custom method
-    // $r->Set ("/user/{userid}/blog", "Api/User/Profil", "Blog");
 
     /* END ROUTES */
 
