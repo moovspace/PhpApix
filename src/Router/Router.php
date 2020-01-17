@@ -99,9 +99,11 @@ class Router
 		$url = $this->GetUrl($_SERVER['REQUEST_URI']);
 		$urlquery = $this->GetUrlQuery($_SERVER['REQUEST_URI']);
 
-		$url = trim($url);
+		$url = trim($url);		
 		$url = rtrim($url, '/');
-		if(empty($url) || $url == '/'){ $url = '/index'; }
+		if(empty($url) || $url == '/' || $url == '/index.php'){ 
+			$url = '/index'; 
+		}
 
 		foreach ($this->Routes as $k => $v)
 		{
@@ -112,7 +114,7 @@ class Router
 			$regex = str_replace("/", "\/", $regex);
 
 			// if url match route->path
-			if(preg_match('/^'.$regex.'[\/]{0,1}$/', $url)){
+			if(preg_match('/^'.$regex.'[\/]{0,1}$/', $url)){				
 				// Return route hash
 				return $k;
 			}
