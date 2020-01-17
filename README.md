@@ -92,7 +92,7 @@ class Email
 ?>
 ```
 
-## Rotes file
+## Api router and routes
 nano router.php
 ```php
 <?php
