@@ -78,11 +78,11 @@ class Router
 	}
 
 	function Clear ()
-        {
-                unset ($_SESSION['Routes']);
+	{
+		unset ($_SESSION['Routes']);
 		unset ($this->Routes);
 		$this->Save ();
-        }
+	}
 
 	/**
 	 * GetRoute get route class name
@@ -96,8 +96,8 @@ class Router
 	$urlquery = $this->GetUrlQuery($_SERVER['REQUEST_URI']);
 
 		$url = trim($url);
-        $url = rtrim($url, '/');
-        if(empty($url) || $url == '/'){ $url = 'Index'; }
+		$url = rtrim($url, '/');
+		if(empty($url) || $url == '/'){ $url = 'Index'; }
 
 		foreach ($this->Routes as $k => $v)
 		{
@@ -134,8 +134,8 @@ class Router
 	function ClearUrl ($url)
 	{
 		$url = trim($url);
-        $url = rtrim($url, '/');
-        return ltrim($url, '/');
+		$url = rtrim($url, '/');
+		return ltrim($url, '/');
 	}
 }
 
