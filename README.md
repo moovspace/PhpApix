@@ -22,7 +22,7 @@ mysql -u root -p < sql/phpapix.sql
 mysql -u root -p < sql/user.sql
 ```
 
-### Create Api controller class path
+# Create Api controller class path
 ```bash
 mkdir -p src/Api/Sample
 ```
