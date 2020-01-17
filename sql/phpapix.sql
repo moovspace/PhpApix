@@ -74,7 +74,7 @@ TRUNCATE TABLE `users`;
 --
 
 INSERT INTO `users` (`id`, `username`, `email`, `pass`, `language`, `role`, `active`, `ban`, `ip`, `code`, `time`, `firstname`, `lastname`, `country`, `district`, `city`, `address`, `zipcode`, `mobile`, `mail`, `www`, `social`, `about`, `sex`, `lng`, `lat`) VALUES
-(15, 'Usero', 'admin@local.host', '5f4dcc3b5aa765d61d8327deb882cf99', 'en', 1, 1, 0, '', 'bbbb53f8adbd500b97010eec333128f7', '2019-12-07 09:13:54', '', '', 'Poland', '', '', '', '', '', '', '', '', '', 'men', '0.000000', '0.000000');
+(15, 'Admin', 'admin@local.host', '5f4dcc3b5aa765d61d8327deb882cf99', 'en', 1, 1, 0, '', 'bbbb53f8adbd500b97010eec333128f7', '2019-12-07 09:13:54', '', '', 'Poland', '', '', '', '', '', '', '', '', '', 'men', '0.000000', '0.000000');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
