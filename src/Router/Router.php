@@ -38,13 +38,20 @@ class Router
 		return $this->Routes;
 	}
 
+	function ErrorPage()
+	{
+		ob_end_clean();
+		header("Location: /error404", 404);
+		ob_flush();
+	}
+
 	function Init ()
 	{
 		// Load class
 		$hash = $this->GetRoute ();
 
 		if(empty($hash)){
-			header('Loaction: /error404');
+			$this->ErrorPage();			
 		}else{
 			$p = $this->Routes[$hash][1]; // Class path
 			$m = $this->Routes[$hash][2]; // Method
@@ -83,9 +90,9 @@ class Router
 	}
 
 	/**
-	 * GetRoute get route class name
-	 * @param  string $current_url Page url path
-	 * @return string              Routes array key (hash)
+	 * GetRoute class
+	 * get routes array hash
+	 * @return string 	Routes array key (hash)
 	 */
 	function GetRoute ()
 	{
