@@ -92,29 +92,27 @@ use PhpApix\Router\Router;
 
 try
 {
-    // Create router
-    $r = new Router();
+	// Create router
+	$r = new Router();
 
-    // Clear all routes
-    $r->Clear();
+	// Clear all routes
+	$r->Clear();
 
-    // Add routes
+	// Add routes
 	$r->Set("/welcome/email/{id}", "Api/Sample/SampleClass", "Index");        
 
-    // $r->Set ("/about", "Api/About", "Index");
-    // $r->Set ("/user/{userid}/blog", "Api/User/Profil", "Blog");
+	// $r->Set ("/about", "Api/About", "Index");
+	// $r->Set ("/user/{userid}/blog", "Api/User/Profil", "Blog");
 
-    // Run router
-    $r->Init();
+	// Run router
+	$r->Init();
 }
 catch (Exception $e)
 {	
-    $e->getMessage();
+	$e->getMessage();
 }
 ?>
 ```
 
 ### Test route
 http://localhost/welcome/email/YourUsername
-
-
