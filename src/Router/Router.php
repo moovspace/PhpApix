@@ -91,9 +91,9 @@ class Router
 	 */
 	function GetRoute ()
 	{
-	// Current url
-	$url = $this->GetUrl($_SERVER['REQUEST_URI']);
-	$urlquery = $this->GetUrlQuery($_SERVER['REQUEST_URI']);
+		// Current url
+		$url = $this->GetUrl($_SERVER['REQUEST_URI']);
+		$urlquery = $this->GetUrlQuery($_SERVER['REQUEST_URI']);
 
 		$url = trim($url);
 		$url = rtrim($url, '/');
