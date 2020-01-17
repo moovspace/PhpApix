@@ -108,10 +108,13 @@ try
 	// Clear all routes
 	$r->Clear();
 
-	// Add routes
-	$r->Set("/welcome/email/{id}", "Api/Sample/SampleClass", "Index");        
+	// Home page url: /index
+    $r->Set ("/index", "Api/Home/Home", "Index");
 
-	// $r->Set ("/about", "Api/About", "Index");
+	// Add routes
+	$r->Set("/welcome/email/{id}", "Api/Sample/SampleClass", "Index");
+
+	// Next route	
 	// $r->Set ("/user/{userid}/blog", "Api/User/Profil", "Blog");
 
 	// Run router
