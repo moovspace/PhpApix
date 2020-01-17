@@ -45,12 +45,13 @@ class SampleClass extends MysqlConnect
 		
 		try
 		{
-			// Url params: /welcome/email => welcome, email
+			// Url parts: 			
 			$params = $router->GetParams($_SERVER['REQUEST_URI']);
 
-			// Mysql pdo sample
-			// $r = $this->Pdo->prepare($sql);
-			// $r->execute($arr);
+			// Mysql pdo sample			
+            $r = $this->Pdo->prepare("SELECT * FROM users WHERE id != :id");
+            $r->execute([':id' => 0]);
+            $rows = $r->fetchAll (); // Get rows
 
 			// Use Your class sample
 			$e = new Email();
