@@ -37,83 +37,14 @@ class Html
 				<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 				<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
+				<link rel="stylesheet" href="/src/Api/Home/style.css">
+
 				<script> 
 					console.log("PhpApix works...");
 				</script>
 
 				<style type="text/css">
-			    	html,body{
-			    		margin: 0px;
-			    		padding: 0px;
-			    	}
-
-			    	* {
-			    		box-sizing: border-box;
-						font-family: 'Quicksand', sans-serif;
-						font-weight: 300;
-						color: #222;
-					}
-
-					a{
-						cursor: pointer; 
-						color: #007bff;
-						font-weight: 600;
-						text-decoration: none;
-					}
-
-					a:hover{
-						color: #a2ff00;
-						text-decoration: none;
-					}
-
-					h1, h2 {
-						font-weight: 900; 			
-						margin-top: 20px;
-						color: #007bff;			
-					}
-
-					h3, h4, h5, h6 {
-						font-weight: 500;
-						margin-top: 20px;
-					}
-
-					.box{
-						float: left; width: 100%; text-align: center; padding: 50px;
-					}
-
-					.list{
-						display: grid;
-						grid-template-columns: repeat(3, 1fr);
-						grid-gap: 1rem;
-					}
-
-					.list-flex{
-						display: flex;
-						align-items: center;
-						justify-content: center;
-						/*
-						grid-template-columns: repeat(3, 1fr);
-						grid-gap: 1rem;
-						*/
-					}
-
-					.list-box{
-						float: left; 
-						width: 31.333%;
-						height: 60px;
-						background: #aaa;
-						color: #fff;
-						padding: 1%;
-						margin: 1%;	
-						border-radius: 10px;
-						display: flex;
-						align-items: center;
-						justify-content: center;
-						grid-gap: 1rem;														
-					}
-
-					bold {font-weight: 900; color: #fff;}
-
+				
 				</style>
 			</head>
 			<body>
