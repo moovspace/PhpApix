@@ -1,19 +1,24 @@
 # PhpApix
-Php api router class
+Php api router with composer autoload
 
-### Clone repo or download last release
+### Clone or download latest release ***(install git and lamp)***
 ```bash
+# install git
+sudo apt install git php-mbstring php-curl curl
+
+# clone phpapix repo
 git clone --depth=1 https://github.com/moovspace/phpapix
 ```
 
-### Create autoload in project folder
+### Create class autoloader ***(install composer)***
 ```bash
 cd phpapix
 composer update
 composer dump-autoload -o
 ```
 
-### Import mysql database
+### Import mysql database ***(vps)***
+Vps server, desktop
 ```bash
 # create db
 mysql -u root -p < sql/phpapix.sql
@@ -26,7 +31,8 @@ chmod -R 775 /path/to/phpapix
 chown -R www-data:youruser /path/to/phpapix
 ```
 
-### PhpApix Mysql database config
+### PhpApix config file: mysql, smtp ***(hosting)***
+Hosting with custom mysql database
 ```bash
 nano src/Settings/Config.php
 ```
@@ -35,7 +41,7 @@ nano src/Settings/Config.php
 http://localhost/welcome/email/YourUsername
 
 
-# Api controller class examples in src/Api directory
+# Api controller class examples in src/Api
 ```bash
 # create dir
 mkdir -p src/Api/Sample
