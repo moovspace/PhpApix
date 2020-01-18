@@ -38,7 +38,8 @@ nano src/Settings/Config.php
 ```
 
 ### Test api
-http://localhost/welcome/email/YourUsername
+ - http://localhost/api/user/admin
+ - http://localhost/welcome/email/YourUsername
 
 
 # Api controller class examples in src/Api
