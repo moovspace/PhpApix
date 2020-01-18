@@ -20,7 +20,15 @@ mysql -u root -p < sql/phpapix.sql
 
 # create db user
 mysql -u root -p < sql/user.sql
+
+# dir permissions (only vps linux)
+chmod -R 775 /path/to/phpapix
+chown -R www-data:youruser /path/to/phpapix
 ```
+
+### Test api
+http://localhost/welcome/email/YourUsername
+
 
 # Create Api controller class path
 ```bash
@@ -137,6 +145,3 @@ catch(Exception $e)
 }
 ?>
 ```
-
-### Test route
-http://localhost/welcome/email/YourUsername
