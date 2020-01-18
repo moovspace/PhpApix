@@ -23,12 +23,12 @@ class User extends MysqlConnect
             // User id or 0
             $id = (int) $r->fetchAll()[0]['id'];
 
-            $error = '';
-
             if($id == 0){
                 $error = 'Error username';
             }
 
+            header('Content-Type: application/json; charset=UTF-8');
+            
             return json_encode(['id' => $id, 'error' => $error]);
         }
         catch(Exception $e)
