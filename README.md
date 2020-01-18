@@ -30,8 +30,9 @@ chown -R www-data:youruser /path/to/phpapix
 http://localhost/welcome/email/YourUsername
 
 
-# Create Api controller class path
+# Api controller class examples in src/Api directory
 ```bash
+# create dir
 mkdir -p src/Api/Sample
 ```
 
