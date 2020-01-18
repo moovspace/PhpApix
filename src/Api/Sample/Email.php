@@ -12,7 +12,7 @@ use PHPMailer\PHPMailer\SMTP;
 class Email
 {
     function Send(){
-		echo "<br> You can send email here.";
+		echo "<br> Send email here.";
 
 		// Send email with smtp php mailer
 		// $this->MailerSmtp('root@local.host', 'Subject hello', '<h1Hello email test</h1>');

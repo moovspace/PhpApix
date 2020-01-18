@@ -6,17 +6,17 @@ class Router
 {
 	protected $Routes = array();
 
-	function __construct ()
+	function __construct()
 	{		
-		$this->Routes = $_SESSION['Routes'];
+		$this->Routes = $_SESSION['Routes'];		
 	}
 
-	function Hash ($url)
+	function Hash($url)
 	{
 		return md5 ($url);
 	}
 
-	function Set ($url, $path, $method)
+	function Set($url, $path, $method)
 	{
 		if (empty ($this->Routes)){
 			$this->Routes = [];
@@ -32,7 +32,7 @@ class Router
 		}
 	}
 
-	function Get ()
+	function Get()
 	{
 		return $this->Routes;
 	}
@@ -40,21 +40,21 @@ class Router
 	function ErrorPage()
 	{
 		ob_end_clean();
-		header("Location: /error404", 404);
+		header("Location: /error404");
 		ob_flush();
 	}
 
-	function Init ()
+	function Init()
 	{
 		// Load class
-		$hash = $this->GetRoute ();
+		$hash = $this->GetRoute();
 
 		if(empty($hash)){
 			$this->ErrorPage();			
 		}else{
 			$p = $this->Routes[$hash][1]; // Class path
 			$m = $this->Routes[$hash][2]; // Method
-			$c = end (explode ('/', $p));
+			$c = end (explode ('/', $p)); // Class name
 			$f = "src/" . ltrim($p,'/') . ".php";
 
 			if(file_exists($f)){
@@ -66,7 +66,7 @@ class Router
 
 				// Run method
 				if(method_exists($obj, $m)){
-					echo $obj->$m ($this);
+					echo $obj->$m($this);
 				}else{
 					throw new Exception("Create new controller (".$p.") method: " . $m, 2);
 				}
@@ -76,12 +76,12 @@ class Router
 		}
 	}
 
-	function Save ()
+	function Save()
 	{
 		$_SESSION['Routes'] = $this->Routes;
 	}
 
-	function Clear ()
+	function Clear()
 	{
 		unset ($_SESSION['Routes']);
 		unset ($this->Routes);
@@ -93,11 +93,10 @@ class Router
 	 * get routes array hash
 	 * @return string 	Routes array key (hash)
 	 */
-	function GetRoute ()
+	function GetRoute()
 	{
 		// Current url
-		$url = $this->GetUrl($_SERVER['REQUEST_URI']);
-		$urlquery = $this->GetUrlQuery($_SERVER['REQUEST_URI']);
+		$url = $this->GetUrl($_SERVER['REQUEST_URI']);		
 
 		$url = trim($url);		
 		$url = rtrim($url, '/');
@@ -121,23 +120,23 @@ class Router
 		}
 	}
 
-	function GetUrl ($url){
+	function GetUrl($url){
 		return $this->Url = parse_url($url, PHP_URL_PATH);
 	}
 
-	function GetUrlQuery ($url){
+	function GetUrlQuery($url){
 		$str = parse_url($url, PHP_URL_QUERY);
 		parse_str($str, $this->UrlQuery);
 		return $this->UrlQuery;
 	}
 
-	function GetParams ($url){
+	function GetParams($url){
 		$url = $this->GetUrl ($url);
 		$url = $this->ClearUrl ($url);
 		return $this->Params = explode('/', $url);
 	}
 
-	function ClearUrl ($url)
+	function ClearUrl($url)
 	{
 		$url = trim($url);
 		$url = rtrim($url, '/');

@@ -1,14 +1,42 @@
 <?php
+use PhpApix\Api\Home\Html;
+
 class ErrorPage
 {
     function Error404($router)
     {
-        echo '<h1>Error 404! Page not found!</h1>';
+		// Include header
+		Html::Header();
+
+		?>
+
+		<div class="box">
+			<img src="media/img/phpapix-logo.jpg" width="156" height="156">
+			<h1>Error 404! Page not found!</h1>
+		</div>
+
+		<?php
+
+		// Include footer
+		Html::Footer();
     }
 
     function Error500($router)
     {
-        echo '<h1>Error 500! Internal server error!</h1>';
+        // Include header
+		Html::Header();
+
+		?>
+
+		<div class="box">
+			<img src="media/img/phpapix-logo.jpg" width="156" height="156">
+			<h1>Error 500! Internal Server Error!</h1>
+		</div>
+
+		<?php
+
+		// Include footer
+		Html::Footer();
     }
 }
 ?>

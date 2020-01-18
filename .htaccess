@@ -12,7 +12,7 @@ RewriteCond %{REQUEST_FILENAME} -f
 RewriteRule (.*) $1 [NC,QSA,L]
 
 # Favicon
-RewriteRule ^favicon\.ico$ /favicon/favicon.ico [L]
+# RewriteRule ^favicon\.ico$ /favicon/favicon.ico [L]
 
 # Rewrite all urls
 RewriteRule ^(.*)/?$ index.php?url=$1 [NC,L,QSA]
