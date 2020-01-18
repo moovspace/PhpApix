@@ -10,6 +10,7 @@ try
 
     // Home page /index
     $r->Set("/index", "Api/Home/Home", "Index");
+    // $r->Set("/index", "Api/Home/Home", "Index");
 
     // Error page /error404
     $r->Set("/error404", "Api/Error/ErrorPage", "Error404");
@@ -23,6 +24,6 @@ try
 }
 catch(Exception $e)
 {
-    $e->getMessage();
+    echo $e->getMessage();
 }
 ?>

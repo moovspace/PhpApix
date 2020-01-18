@@ -28,7 +28,7 @@ class Router
 			$this->Routes[$hash] = [$url, $path, $method];
 			$this->Save (); // Save routes to session
 		}else{
-			// throw new Exception ("Route with this url exists!", 1);
+			throw new Exception ("Duplicate routes! Route with this url " . $url . " exists.", 1);
 		}
 	}
 
