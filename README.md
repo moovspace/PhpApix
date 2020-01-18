@@ -144,6 +144,9 @@ try
     // Error page /error404
     $r->Set("/error404", "Api/Error/ErrorPage", "Error404");
 
+    // Json api route
+    $r->Set("/api/user/{id}", "Api/User/User", "GetId");
+
     // Add route: url, class path, class method
     $r->Set("/welcome/email/{id}", "Api/Sample/SampleClass", "Index");
 
