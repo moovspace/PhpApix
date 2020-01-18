@@ -26,6 +26,11 @@ chmod -R 775 /path/to/phpapix
 chown -R www-data:youruser /path/to/phpapix
 ```
 
+### PhpApix Mysql database config
+```bash
+nano src/Settings/Config.php
+```
+
 ### Test api
 http://localhost/welcome/email/YourUsername
 
