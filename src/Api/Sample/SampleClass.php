@@ -17,15 +17,22 @@ class SampleClass extends MysqlConnect
     {
         try
         {
+            
+
             // Include header
             Html::Header();
 
             echo '<div class="box">';
             
                 echo '<h2>SampleClass works!</h2>';
-                // Url params: /welcome/email => welcome, email
-                $params = $router->GetParams($_SERVER['REQUEST_URI']);
-                echo '<br>' . ucfirst($params[0]) . ' ' . $params[2];
+                // Url params                
+                $params = $router->GetParams($_SERVER['REQUEST_URI']);                
+
+                // Get url param with {id}
+                $id = $router->getParam('{id}');
+                echo '<br> Welcome ' . $id . '!';
+
+                
 
 
                 echo '<h2>Database works!</h2>';

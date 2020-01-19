@@ -5,6 +5,7 @@ use \Exception;
 class Router
 {
 	protected $Routes = array();
+	protected $CurrentRoute = '';
 
 	function __construct()
 	{		
@@ -106,16 +107,30 @@ class Router
 
 		foreach ($this->Routes as $k => $v)
 		{
-			$route_path = $v[0]; // each url
+			$route_path = $v[0]; // each url			
 
 			// Replace {slug} from url
 			$regex = preg_replace('/\{(.*?)\}/','[a-zA-z0-9_.-]+',$route_path);
 			$regex = str_replace("/", "\/", $regex);
 
 			// if url match route->path
-			if(preg_match('/^'.$regex.'[\/]{0,1}$/', $url)){				
+			if(preg_match('/^'.$regex.'[\/]{0,1}$/', $url)){
+				// Set route
+				$this->CurrentRoute = $route_path;
 				// Return route hash
 				return $k;
+			}
+		}
+	}
+
+	function getParam($id = '{id}'){
+		if(!empty($this->CurrentRoute)){
+			$u = explode('/', $this->GetUrl($_SERVER['REQUEST_URI']));
+			$r = explode('/', $this->CurrentRoute);
+			foreach ($r as $k => $v) {
+				if($v == $id){
+					return $u[$k];
+				}
 			}
 		}
 	}
