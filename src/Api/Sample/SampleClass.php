@@ -47,7 +47,7 @@ class SampleClass extends MysqlConnect
                 $e = new Email();
                 $e->Send('email@goes.here', 'Subject here', '<h1> Html content goes here </h1>');
 
-                echo '</br></br></br> <a onclick="window.scrollTo({ top: 0, behavior: \'smooth\' });">UP</a>';
+                echo '</br></br></br> <a class="btn btn-outline-primary" onclick="window.scrollTo({ top: 0, behavior: \'smooth\' });">UP</a>';
             echo '</div>';
 
             // Include footer
