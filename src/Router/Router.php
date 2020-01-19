@@ -35,6 +35,16 @@ class Router
 		}
 	}
 
+	function Include($path, $require = false){
+		$path = rtrim(ltrim($path,'/'), '/');
+		$f = "src/" . $path . ".php";		
+		if($require == true){
+			require($f);	
+		}else{
+			include($f);
+		}
+	}
+
 	function Get()
 	{
 		return $this->Routes;
@@ -56,10 +66,11 @@ class Router
 			$this->ErrorPage();			
 		}else{
 			$p = $this->Routes[$hash][1]; // Class path
+			$p = rtrim(ltrim($p,'/'), '/');
 			$m = $this->Routes[$hash][2]; // Method
-			$str = explode ('/', $p);
-			$c = end ($str); // Class name
-			$f = "src/" . ltrim($p,'/') . ".php";
+			$s = explode ('/', $p);
+			$c = end ($s); // Class name
+			$f = "src/" . $p . ".php";
 
 			if(file_exists($f)){
 				// Include class
