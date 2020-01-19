@@ -1,4 +1,7 @@
 <?php
+// Reset php-fpm cache fore .user.ini files
+// opcache_reset();
+
 // Time limit
 set_time_limit(0);
 
