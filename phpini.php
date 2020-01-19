@@ -16,8 +16,10 @@ error_reporting(E_ALL & ~E_NOTICE);
 // Session cookie secure, lifetime unlimited
 session_set_cookie_params(0, '/', '.'.$_SERVER["HTTP_HOST"], isset($_SERVER["HTTPS"]), true);
 
-// Set secure cookie $_COOKIE uniqueid
-setcookie("phpapix", uniqid(), time() + 48 * 60 * 60 , "/", '.'.$_SERVER['HTTP_HOST'], isset($_SERVER["HTTPS"]), true);
+if(empty($_COOKIE['phpapix'])) {
+	// Set secure cookie $_COOKIE uniqueid
+	setcookie("phpapix", uniqid(), time() + 48 * 60 * 60 , "/", '.'.$_SERVER['HTTP_HOST'], isset($_SERVER["HTTPS"]), true);
+}
 
 // Session start
 session_start();
