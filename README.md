@@ -1,7 +1,7 @@
 # PhpApix
-Php api router with composer autoload
+Php api router with composer autoload. See how to build a server side api routing system in PHP.
 
-### Clone or download latest release ***(install git and lamp)***
+### Clone or download latest release ***(install git, lamp or lemp server)***
 ```bash
 # install git
 sudo apt install git php-mbstring php-curl curl
@@ -28,7 +28,10 @@ mysql -u root -p < sql/user.sql
 
 # dir permissions (only vps linux)
 chmod -R 775 /path/to/phpapix
+# apache2
 chown -R www-data:youruser /path/to/phpapix
+# nginx
+chown -R nginx:youruser /path/to/phpapix
 ```
 
 ### PhpApix config file: mysql, smtp ***(hosting)***

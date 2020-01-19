@@ -32,9 +32,6 @@ class SampleClass extends MysqlConnect
                 $id = $router->getParam('{id}');
                 echo '<br> Welcome ' . $id . '!';
 
-                
-
-
                 echo '<h2>Database works!</h2>';
                 echo '<div class="box">';
                 // Mysql pdo sample
