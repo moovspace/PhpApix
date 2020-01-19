@@ -18,7 +18,7 @@ class Home extends MysqlConnect
     	?>
 
 		<div class="box">
-			<img src="media/img/phpapix-logo.jpg" width="156" height="156">
+			<img src="media/img/phpapix-logo.jpg" width="156" height="156" class="logo">
 			<h1>PhpApix</h1>
 			<h3>Php api router with composer autoload</h3>
 			<br>

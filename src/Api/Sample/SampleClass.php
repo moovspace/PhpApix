@@ -30,6 +30,7 @@ class SampleClass extends MysqlConnect
                 $id = $router->getParam('{id}');
                 echo '</br> Welcome ' . $id . '!';
 
+
                 echo '<h2>Database works!</h2>';
                 echo '<div class="box">';
                 // Mysql pdo sample
@@ -48,6 +49,7 @@ class SampleClass extends MysqlConnect
                 $e->Send('email@goes.here', 'Subject here', '<h1> Html content goes here </h1>');
 
                 echo '</br></br></br> <a class="btn btn-outline-primary" onclick="window.scrollTo({ top: 0, behavior: \'smooth\' });">UP</a>';
+                
             echo '</div>';
 
             // Include footer
