@@ -156,6 +156,9 @@ try
     // Add route: url, class path, class method
     $r->Set("/welcome/email/{id}", "Api/Sample/SampleClass", "Index");
 
+    // Or load from controller route file
+    include('src/Api/Sample/route.php');
+
     /* END ROUTES */
 
     // Run router

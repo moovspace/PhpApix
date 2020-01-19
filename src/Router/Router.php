@@ -9,7 +9,7 @@ class Router
 
 	function __construct()
 	{		
-		$this->Routes = $_SESSION['Routes'];		
+		$this->Routes = $_SESSION['PhpApixRoutes'];		
 	}
 
 	function Hash($url)
