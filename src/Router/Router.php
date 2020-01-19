@@ -36,8 +36,8 @@ class Router
 	}
 
 	function Include($path, $require = false){
-		$path = rtrim(ltrim($path,'/'), '/');
-		$f = "src/" . $path . ".php";		
+		$p = $this->ClearUrl($path);
+		$f = "src/" . $p . ".php";		
 		if($require == true){
 			require($f);	
 		}else{
@@ -65,8 +65,8 @@ class Router
 		if(empty($hash)){
 			$this->ErrorPage();			
 		}else{
-			$p = $this->Routes[$hash][1]; // Class path
-			$p = rtrim(ltrim($p,'/'), '/');
+			$p = $this->Routes[$hash][1]; // Class path			
+			$p = $this->ClearUrl($p);
 			$m = $this->Routes[$hash][2]; // Method
 			$s = explode ('/', $p);
 			$c = end ($s); // Class name
