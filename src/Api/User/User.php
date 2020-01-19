@@ -19,9 +19,14 @@ class User extends MysqlConnect
             // Mysql pdo
             $r = $this->Pdo->prepare("SELECT * FROM users WHERE username = :id");
             $r->execute([':id' => $username]);
+            $rows = $r->fetchAll();
 
-            // Fetch user id or 0
-            $id = (int) $r->fetchAll()[0]['id'];
+            if(!empty($rows)){
+                // Fetch user id or 0
+                $id = (int) $rows[0]['id'];
+            }else{
+                $id = 0;
+            }
 
             if($id == 0){
                 $error = 'Error username';
