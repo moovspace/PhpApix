@@ -17,12 +17,10 @@ class SampleClass extends MysqlConnect
     {
         try
         {
-            
-
             // Include header
             Html::Header();
 
-            echo '<div class="box">';
+            echo '<div class="box" id="box">';
             
                 echo '<h2>SampleClass works!</h2>';
                 // Url params                
@@ -30,7 +28,7 @@ class SampleClass extends MysqlConnect
 
                 // Get url param with {id}
                 $id = $router->getParam('{id}');
-                echo '<br> Welcome ' . $id . '!';
+                echo '</br> Welcome ' . $id . '!';
 
                 echo '<h2>Database works!</h2>';
                 echo '<div class="box">';
@@ -44,11 +42,12 @@ class SampleClass extends MysqlConnect
                 echo '</div>';
                 
 
-                echo '<h2>Custom Email class works!</h2>';            
+                echo '<h2 id="bottom">Custom Email class works!</h2>';            
                 // Use Your class sample
                 $e = new Email();
                 $e->Send('email@goes.here', 'Subject here', '<h1> Html content goes here </h1>');
 
+                echo '</br></br></br> <a onclick="window.scrollTo({ top: 0, behavior: \'smooth\' });">UP</a>';
             echo '</div>';
 
             // Include footer

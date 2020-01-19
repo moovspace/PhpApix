@@ -34,9 +34,14 @@ class Html
 				<!-- Style -->
 				<link rel="stylesheet" href="/src/Api/Home/style.css">
 
+				<!-- Script -->
+				<script src="/src/Api/Home/main.js"></script>
+
 				<script> 
+				$(document).ready(function(){				
 					console.log("PhpApix works...");
 					console.log(document.cookie);
+				});
 				</script>
 
 				<style type="text/css">
