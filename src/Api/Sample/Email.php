@@ -5,20 +5,24 @@ namespace PhpApix\Api\Sample;
 // Import classes
 use \Exception;
 
-// import composer class (require phpmailer)
+// Import composer class (require phpmailer)
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 
 class Email
 {
-    function Send(){
-		echo "<br> Send email here.";
+    function Send($email = '', $subject = '', $html = ''){
+		echo "<br> Send email with smtp here ...";
 
-		// Send email with smtp php mailer
-		// $this->MailerSmtp('root@local.host', 'Subject hello', '<h1Hello email test</h1>');
+		// Send email with local smtp
+		// $this->MailerSmtp($email, $subject, $html);
+
+		// Send email with external smtp
+		// Config file: src/Setings/Config.php
+		// $this->MailerSmtp($email, $subject, $html, self::SMTP_FROM_EMAIL, self::SMTP_FROM_USER, self::SMTP_USER, self::SMTP_PASS, self::SMTP_HOST, self::SMTP_TLS, self::SMTP_AUTH, self::SMTP_DEBUG);
 	}
 
-    function MailerSmtp($email, $subject, $html, $files = [], $from_email = 'admin@localhost', $from_user = 'Admin', $smtpUser = '', $smtpPass = '', $smtpHost = '127.0.0.1', $smtpTls = false, $smtpAuth = false, $smtpPort = 25, $smtpDebug = 0){
+    function MailerSmtp($email, $subject, $html, $files = [], $from_email = 'admin@local.host', $from_user = 'Admin', $smtpUser = '', $smtpPass = '', $smtpHost = '127.0.0.1', $smtpTls = false, $smtpAuth = false, $smtpPort = 25, $smtpDebug = 0){
 		$m = new PHPMailer(true); // Passing `true` enables exceptions
 		try {
 			//Server settings

@@ -15,8 +15,8 @@ class Config
 	const SMTP_PASS = '';
 	const SMTP_HOST = '127.0.0.1';
 	const SMTP_PORT = 25; // 25, 587, 465
-	const SMTP_FROM_EMAIL = 'email@domain.xx';
-	const SMTP_FROM_USER = 'Office';
+	const SMTP_FROM_EMAIL = 'no-reply@local.host';
+	const SMTP_FROM_USER = 'Newsletter';
 	const SMTP_TLS = false;
 	const SMTP_AUTH = false;
 	const SMTP_DEBUG = 0;

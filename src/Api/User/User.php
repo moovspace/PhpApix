@@ -20,20 +20,22 @@ class User extends MysqlConnect
             $r = $this->Pdo->prepare("SELECT * FROM users WHERE username = :id");
             $r->execute([':id' => $username]);
 
-            // User id or 0
+            // Fetch user id or 0
             $id = (int) $r->fetchAll()[0]['id'];
 
             if($id == 0){
                 $error = 'Error username';
             }
 
+            // Json header
             header('Content-Type: application/json; charset=UTF-8');
             
+            // Json string
             return json_encode(['id' => $id, 'error' => $error]);
         }
         catch(Exception $e)
         {
-                echo $e->getMessage();
+            echo $e->getMessage();
         }
     }
 }

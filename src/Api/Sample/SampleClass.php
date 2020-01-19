@@ -43,7 +43,7 @@ class SampleClass extends MysqlConnect
                 echo '<h2>Custom Email class works!</h2>';            
                 // Use Your class sample
                 $e = new Email();
-                $e->Send();
+                $e->Send('email@goes.here', 'Subject here', '<h1> Html content goes here </h1>');
 
             echo '</div>';
 
