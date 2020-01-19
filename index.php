@@ -5,6 +5,4 @@ require("vendor/autoload.php");
 require("phpini.php");
 // Router, routes
 require('router.php');
-
-echo ini_get('upload_max_filesize');
 ?>
