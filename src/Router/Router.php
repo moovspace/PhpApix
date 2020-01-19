@@ -9,7 +9,9 @@ class Router
 
 	function __construct()
 	{		
-		$this->Routes = $_SESSION['PhpApixRoutes'];		
+		if(!empty($_SESSION['PhpApixRoutes'])){
+			$this->Routes = $_SESSION['PhpApixRoutes'];
+		}
 	}
 
 	function Hash($url)
@@ -55,7 +57,8 @@ class Router
 		}else{
 			$p = $this->Routes[$hash][1]; // Class path
 			$m = $this->Routes[$hash][2]; // Method
-			$c = end (explode ('/', $p)); // Class name
+			$str = explode ('/', $p);
+			$c = end ($str); // Class name
 			$f = "src/" . ltrim($p,'/') . ".php";
 
 			if(file_exists($f)){
@@ -79,7 +82,9 @@ class Router
 
 	function Save()
 	{
-		$_SESSION['Routes'] = $this->Routes;
+		if(!empty($this->Routes)){
+			$_SESSION['Routes'] = $this->Routes;
+		}
 	}
 
 	function Clear()
