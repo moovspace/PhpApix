@@ -24,11 +24,9 @@ class User extends MysqlConnect
             if(!empty($rows)){
                 // Fetch user id or 0
                 $id = (int) $rows[0]['id'];
+                $error = '';
             }else{
                 $id = 0;
-            }
-
-            if($id == 0){
                 $error = 'Error username';
             }
 
