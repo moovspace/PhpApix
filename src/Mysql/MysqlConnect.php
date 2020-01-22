@@ -111,19 +111,19 @@ class MysqlConnect extends Config
 	}
 
 	function ImportSqlite($dbPath = 'dbname.db', $sqlPath = 'phpapix.sql'){
-        $db = new PDO('sqlite:' . $dbPath);
-        $fh = fopen($sqlPath, 'r');
-        while ($line = fread($fh, 4096)) {
-            $db->exec($line);
-        }
-        fclose($fh);
+		$db = new PDO('sqlite:' . $dbPath);
+		$fh = fopen($sqlPath, 'r');
+		while ($line = fread($fh, 4096)) {
+			$db->exec($line);
+		}
+		fclose($fh);
 	}
 
 	function ImportSql($sqlPath = 'phpapix.sql'){
 		$fh = fopen($sqlPath, 'r');
-        while ($line = fread($fh, 4096)) {
-            $this->Pdo->exec($line);
-        }
+		while ($line = fread($fh, 4096)) {
+			$this->Pdo->exec($line);
+		}
 		fclose($fh);
 		// Or
 		// $r = $this->pdo->exec(file_get_contents($sqlPath));
