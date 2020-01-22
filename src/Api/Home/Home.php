@@ -22,14 +22,24 @@ class Home extends MysqlConnect
 			<h1>PhpApix</h1>
 			<h3>Php api router with composer autoload</h3>
 			<br>
-			<a href="/welcome/email/UserName"> Page sample </a> </br> 
-			<a href="/api/user/Admin"> Json api sample </a>						
+			<a href="/welcome/email/UserName"> Page sample </a> </br>
+			<a href="/api/user/Admin"> Json api sample </a>
 			<h5>For more examples, go to the src/Api directory.</h5>
 			<br>
-			<a href="https://github.com/moovspace/PhpApix" class="btn btn-outline-primary" target="__blank"> Get Started With PhpApix</a>        	
+			<a href="https://github.com/moovspace/PhpApix" class="btn btn-outline-primary" target="__blank"> Get Started With PhpApix</a>
 		</div>
 
         <?php
+
+		try
+		{
+			// Create mysql database, tables
+			$this->Create();
+		}
+		catch(Exception $e)
+		{
+			echo $e->getMessage();
+		}
 
         // Include footer
     	Html::Footer();
