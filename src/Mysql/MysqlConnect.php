@@ -67,47 +67,49 @@ class MysqlConnect extends Config
 	}
 
 	public function Create()
-    {
-        try{
-            $table = "
-            CREATE TABLE IF NOT EXISTS `users` (
-                `id` bigint(22) NOT NULL AUTO_INCREMENT,
-                `username` varchar(32) NOT NULL DEFAULT '',
-                `email` varchar(180) NOT NULL DEFAULT '',
-                `pass` varchar(32) NOT NULL DEFAULT '',
-                `language` varchar(10) NOT NULL DEFAULT 'en',
-                `role` int(3) NOT NULL DEFAULT '1',
-                `active` int(3) NOT NULL DEFAULT '0',
-                `ban` int(3) NOT NULL DEFAULT '0',
-                `ip` varchar(200) NOT NULL DEFAULT '',
-                `code` varchar(32) NOT NULL DEFAULT 'abc321',
-                `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-                `firstname` varchar(50) NOT NULL DEFAULT '',
-                `lastname` varchar(50) NOT NULL DEFAULT '',
-                `country` varchar(100) NOT NULL DEFAULT 'Poland',
-                `district` varchar(100) NOT NULL DEFAULT '',
-                `city` varchar(50) NOT NULL DEFAULT '',
-                `address` varchar(100) NOT NULL DEFAULT '',
-                `zipcode` varchar(10) NOT NULL DEFAULT '',
-                `mobile` varchar(50) NOT NULL DEFAULT '',
-                `mail` varchar(250) NOT NULL DEFAULT '',
-                `www` varchar(250) NOT NULL DEFAULT '',
-                `social` text COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-                `about` text COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-                `sex` enum('men','woman') DEFAULT 'men',
-                `lng` decimal(10,6) NOT NULL DEFAULT '0.000000',
-                `lat` decimal(10,6) NOT NULL DEFAULT '0.000000',
-                PRIMARY KEY (`id`),
-                UNIQUE KEY `ukey1` (`email`),
-                UNIQUE KEY `ukey` (`username`),
-                KEY `id` (`id`)
-            ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-            ";
-            $r = $this->Pdo->query($table);
-
-        }catch(Exception $e){
-            throw new Exception("Error create table: ". $e->getMessage(), 1);
-        }
+	{
+		try
+		{
+			$table = "
+			CREATE TABLE IF NOT EXISTS `users` (
+				`id` bigint(22) NOT NULL AUTO_INCREMENT,
+				`username` varchar(32) NOT NULL DEFAULT '',
+				`email` varchar(180) NOT NULL DEFAULT '',
+				`pass` varchar(32) NOT NULL DEFAULT '',
+				`language` varchar(10) NOT NULL DEFAULT 'en',
+				`role` int(3) NOT NULL DEFAULT '1',
+				`active` int(3) NOT NULL DEFAULT '0',
+				`ban` int(3) NOT NULL DEFAULT '0',
+				`ip` varchar(200) NOT NULL DEFAULT '',
+				`code` varchar(32) NOT NULL DEFAULT 'abc321',
+				`time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+				`firstname` varchar(50) NOT NULL DEFAULT '',
+				`lastname` varchar(50) NOT NULL DEFAULT '',
+				`country` varchar(100) NOT NULL DEFAULT 'Poland',
+				`district` varchar(100) NOT NULL DEFAULT '',
+				`city` varchar(50) NOT NULL DEFAULT '',
+				`address` varchar(100) NOT NULL DEFAULT '',
+				`zipcode` varchar(10) NOT NULL DEFAULT '',
+				`mobile` varchar(50) NOT NULL DEFAULT '',
+				`mail` varchar(250) NOT NULL DEFAULT '',
+				`www` varchar(250) NOT NULL DEFAULT '',
+				`social` text COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+				`about` text COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+				`sex` enum('men','woman') DEFAULT 'men',
+				`lng` decimal(10,6) NOT NULL DEFAULT '0.000000',
+				`lat` decimal(10,6) NOT NULL DEFAULT '0.000000',
+				PRIMARY KEY (`id`),
+				UNIQUE KEY `ukey1` (`email`),
+				UNIQUE KEY `ukey` (`username`),
+				KEY `id` (`id`)
+			) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+			";
+			$r = $this->Pdo->query($table);
+		}
+		catch(Exception $e)
+		{
+			throw new Exception("Error create table: ". $e->getMessage(), 1);
+		}
 	}
 
 	function ImportSqlite($dbPath = 'dbname.db', $sqlPath = 'phpapix.sql'){
