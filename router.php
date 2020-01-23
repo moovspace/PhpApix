@@ -17,7 +17,7 @@ try
 
     // Only POST, PUT
     $r->Set('/route2', function($p) {
-        echo "WORKS WITH POST " . ' ' . implode(' ', $_GET['id']);
+        echo "WORKS WITH POST " . ' ' . implode(' ', $_POST['id']);
     }, 'Func params here', ['POST', 'PUT']);
 
     // Api route
