@@ -35,7 +35,7 @@ class Router
 
 	function ValidRequestMethod($arr){
 		if (!in_array($_SERVER['REQUEST_METHOD'], array_map('strtoupper', $arr))){
-			throw new Exception(json_encode(["error" => "Error Request Method! Allowed methods: " . implode(', ', $arr)]), 3);
+			throw new Exception("Error Request Method! Allowed methods: " . implode(', ', $arr), 3);
 		}
 	}
 
