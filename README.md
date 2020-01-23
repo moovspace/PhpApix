@@ -173,3 +173,12 @@ class Email
 }
 ?>
 ```
+
+### Curl requests
+```bash
+# GET
+curl http://phpapi.xx/route1?name=admin&shoesize=1
+
+# POST
+curl -d 'name=PhpApix&age=19' http://phpapi.xx/route2
+```
