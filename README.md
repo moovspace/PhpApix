@@ -120,7 +120,7 @@ class SampleClass extends MysqlConnect
 			$params = $router->GetParams($_SERVER['REQUEST_URI']);
 
 			// Url param with route {id}
-			$id = $router->getParam('{id}');
+			$id = $router->GetParam('{id}');
 
 			// Mysql pdo sample
 			$r = $this->Pdo->prepare("SELECT * FROM users WHERE id != :id");
