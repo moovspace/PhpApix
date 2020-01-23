@@ -51,8 +51,8 @@ nano src/Settings/Config.php
 mkdir -p src/Api/Sample
 ```
 
-## Router and routes
-nano router.php
+## Router ***(router.php)***
+Default request methods: GET, POST, PUT
 ```php
 <?php
 use PhpApix\Router\Router;
@@ -61,43 +61,59 @@ try
 {
 	$r = new Router();
 
-	/* ROUTES */
-
-	// Home page /index , default methods: GET, POST, PUT
+	// Homepage /index route
 	$r->Set("/index", "Api/Home/Home", "Index");
 
-	// Only GET
-	$r->Set('/route1', function($p) {
-		echo "WORKS WITH GET " . $p[0] . ' ' .$_GET['id'];
-	}, ['Param 1'], ['GET']);
-
-	// Only POST, PUT
-	$r->Set('/route2', function($p) {
-		echo "WORKS WITH POST " . ' ' . implode(' ', $_POST);
-	}, 'Func params here', ['POST', 'PUT']);
-
-	// Api route
-	$r->Set("/api/user/{id}", "Api/User/User", "GetId");
-
-	// Add route: url, class path, class method
-	$r->Set("/welcome/email/{id}", "Api/Sample/SampleClass", "Index");
-
-	// Or load from controller route.php file
-	// $r->Include('Api/Sample/route');
-
-	/* END ROUTES */
-
-	// Error Page
+	// Error page
 	$r->ErrorPage();
 }
 catch(Exception $e)
 {
-	echo $e->getMessage();
+	echo json_encode(["errorMsg" => $e->getMessage(), "errorCode" => $e->getCode()]);
 }
 ?>
 ```
 
-## Route controller class ***(without namespace)***
+### Route with function
+Add route: Set(url, callback(), [calback params], [request methods])
+```php
+<?php
+	// GET Request
+	$r->Set('/route1', function($p) {
+		echo "WORKS WITH GET " . $p[0] . ' ' .$_GET['id'];
+	}, ['Param 1'], ['GET']);
+
+	// POST, PUT Request
+	$r->Set('/route2', function($p) {
+		return "WORKS WITH POST " . ' ' . implode(' ', $_POST);
+	}, ['function', 'params', 'here'], ['POST', 'PUT']);
+?>
+```
+
+### Route with class
+Add route: Set(url, class path, class method, [request methods])
+```php
+<?php
+	// GET Request
+	$r->Set("/api/user/{id}", "Api/User/User", "GetId", ['GET']);
+
+	// POST, PUT Request
+	$r->Set("/welcome/email/{id}", "Api/Sample/SampleClass", "Index", ['POST', 'PUT']);
+?>
+```
+
+### Route include with class
+Include route.php file with routes from controller folder
+```php
+	// Include
+	$r->Include('Api/Sample/route');
+
+	// Require
+	$r->Include('Api/Sample/route', true);
+?>
+```
+
+## Router controller class ***(without namespace)***
 nano src/Api/Sample/SampleClass.php
 ```php
 <?php
