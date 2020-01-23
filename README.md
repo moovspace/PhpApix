@@ -88,7 +88,7 @@ try
 	/* END ROUTES */
 
 	// Error Page
-    $r->ErrorPage();
+	$r->ErrorPage();
 }
 catch(Exception $e)
 {
