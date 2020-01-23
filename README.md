@@ -59,21 +59,24 @@ use PhpApix\Router\Router;
 
 try
 {
-    // Create router
     $r = new Router();
-
-    // Clear all routes
-    $r->Clear();
 
     /* ROUTES */
 
-    // Home page /index
+    // Home page /index , default methods: GET, POST, PUT
     $r->Set("/index", "Api/Home/Home", "Index");
 
-    // Error page /error404
-    $r->Set("/error404", "Api/Error/ErrorPage", "Error404");
+    // Only GET
+    $r->Set('/route1', function($p) {
+        echo "WORKS WITH GET " . $p[0];
+    }, ['!!!'], ['GET']);
 
-    // Json api route
+    // Only POST, PUT
+    $r->Set('/route2', function($arg) {
+        echo "WORKS WITH POST " . $arg;
+    }, 'METHOD', ['POST', 'PUT']);
+
+    // Api route
     $r->Set("/api/user/{id}", "Api/User/User", "GetId");
 
     // Add route: url, class path, class method
@@ -82,14 +85,14 @@ try
     // Or load from controller route.php file
     // $r->Include('Api/Sample/route');
 
-    /* END ROUTES */
+	/* END ROUTES */
 
-    // Run router
-    $r->Init();
+	// Error Page
+    $r->ErrorPage();
 }
 catch(Exception $e)
-{	
-    $e->getMessage();
+{
+    echo $e->getMessage();
 }
 ?>
 ```
@@ -110,16 +113,16 @@ class SampleClass extends MysqlConnect
 	function Index($router)
 	{
 		echo "Hello from SampleClass !!!";
-		
+
 		try
 		{
-			// Url parts			
+			// Url parts
 			$params = $router->GetParams($_SERVER['REQUEST_URI']);
 
 			// Url param with route {id}
-			$id = $router->getParam('{id}');            
+			$id = $router->getParam('{id}');
 
-			// Mysql pdo sample			
+			// Mysql pdo sample
 			$r = $this->Pdo->prepare("SELECT * FROM users WHERE id != :id");
 			$r->execute([':id' => 0]);
 			$rows = $r->fetchAll (); // Get rows
@@ -163,7 +166,7 @@ class Email
 			$m = new PHPMailer(true);
 		}
 		catch(Exception $e)
-		{	
+		{
 		    $e->getMessage();
 		}
 	}

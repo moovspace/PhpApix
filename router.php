@@ -4,28 +4,35 @@ use PhpApix\Router\Router;
 try
 {
     $r = new Router();
-    $r->Clear();
 
     /* ROUTES */
 
-    // Home page /index
-    $r->Set("/index", "Api/Home/Home", "Index");    
+    // Home page /index , default methods: GET, POST, PUT
+    $r->Set("/index", "Api/Home/Home", "Index");
 
-    // Error page /error404
-    $r->Set("/error404", "Api/Error/ErrorPage", "Error404");
+    // Only GET
+    $r->Set('/route1', function($p) {
+        echo "WORKS WITH GET " . $p[0] . ' ' .$_GET['id'];
+    }, ['Param 1'], ['GET']);
+
+    // Only POST, PUT
+    $r->Set('/route2', function($p) {
+        echo "WORKS WITH POST " . ' ' . implode(' ', $_GET['id']);
+    }, 'Func params here', ['POST', 'PUT']);
 
     // Api route
     $r->Set("/api/user/{id}", "Api/User/User", "GetId");
 
     // Add route: url, class path, class method
     $r->Set("/welcome/email/{id}", "Api/Sample/SampleClass", "Index");
-    
+
     // Or load from controller route.php file
     // $r->Include('Api/Sample/route');
 
     /* END ROUTES */
-    
-    $r->Init();
+
+    // Error Page
+    $r->ErrorPage();
 }
 catch(Exception $e)
 {
