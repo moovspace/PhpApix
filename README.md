@@ -107,6 +107,7 @@ Add route: Set(url, class path, class method, [request methods])
 ### Route include with class
 Include route.php file with routes from controller folder
 ```php
+<?php
 	// Include
 	$r->Include('Api/Sample/route');
 
