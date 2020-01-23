@@ -68,13 +68,13 @@ try
 
     // Only GET
     $r->Set('/route1', function($p) {
-        echo "WORKS WITH GET " . $p[0];
-    }, ['!!!'], ['GET']);
+        echo "WORKS WITH GET " . $p[0] . ' ' .$_GET['id'];
+    }, ['Param 1'], ['GET']);
 
     // Only POST, PUT
-    $r->Set('/route2', function($arg) {
-        echo "WORKS WITH POST " . $arg;
-    }, 'METHOD', ['POST', 'PUT']);
+    $r->Set('/route2', function($p) {
+        echo "WORKS WITH POST " . ' ' . implode(' ', $_GET['id']);
+    }, 'Func params here', ['POST', 'PUT']);
 
     // Api route
     $r->Set("/api/user/{id}", "Api/User/User", "GetId");
