@@ -64,6 +64,8 @@ try
 	// Homepage /index route
 	$r->Set("/index", "Api/Home/Home", "Index");
 
+	/* Routes here */
+
 	// Error page
 	$r->ErrorPage();
 }
