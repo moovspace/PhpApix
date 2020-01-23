@@ -39,7 +39,7 @@ class Router
 		}
 	}
 
-    function Set($route, $class, $method = 'Index', array $request_methods = ['GET', 'POST', 'PUT'])
+	function Set($route, $class, $method = 'Index', array $request_methods = ['GET', 'POST', 'PUT'])
 	{
 		$regex = preg_replace('/\{(.*?)\}/','[a-zA-z0-9_.-]+',$route); // Replace {slug} from url
 		$regex = str_replace("/", "\/", $regex);
@@ -63,9 +63,9 @@ class Router
 		}
     }
 
-    function LoadClass($path, $method){
-        if(!empty($path) || !empty($method))
-        {
+	function LoadClass($path, $method){
+		if(!empty($path) || !empty($method))
+		{
 			$p = $this->ClearUrl($path); // Class Path
 			$m = $method; // Method
 			$s = explode ('/', $p);
@@ -86,13 +86,13 @@ class Router
 			}else{
 				throw new Exception("Create new controller file: " . $f, 1);
 			}
-        }
+		}
     }
 
 	function ErrorPage()
 	{
-        ErrorPage::Error404($this);
-    }
+		ErrorPage::Error404($this);
+	}
 
 	function GetParam($id = '{id}'){
 		if(!empty($this->CurrentRoute)){
@@ -122,16 +122,16 @@ class Router
 	function ClearUrl($url)
 	{
 		return ltrim(rtrim(trim($url), '/'), '/');
-    }
+	}
 
-    /**
-     * If method does not exists __call()
-     *
-     * @param $name
-     * @param $arg
-     */
-    public function __call($name, $arg)
-    {
+	/**
+	 * If method does not exists __call()
+	 *
+	 * @param $name
+	 * @param $arg
+	 */
+	public function __call($name, $arg)
+	{
 		echo "Calling object method '$name' with arguments: ". implode(', ', $arg). "\n";
 		// call_user_func($arg[1]);
 		// $this->CallMethod($args);
