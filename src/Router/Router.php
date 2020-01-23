@@ -5,25 +5,25 @@ use PhpApix\Api\Error\ErrorPage;
 
 class Router
 {
-    protected $CurrentRoute = '';
-    protected $Uri = '';
-    protected $UriQuery = [];
+	protected $CurrentRoute = '';
+	protected $Uri = '';
+	protected $UriQuery = [];
 
 	function __construct()
 	{
 		$this->Uri = $this->GetUrl($_SERVER['REQUEST_URI']); // Current url part
-        $this->UriQuery = $this->GetUrlQuery($_SERVER['REQUEST_URI']); // Current url params
-        $this->IsIndexPage();
-    }
+		$this->UriQuery = $this->GetUrlQuery($_SERVER['REQUEST_URI']); // Current url params
+		$this->IsIndexPage();
+	}
 
-    function IsIndexPage(){
+	function IsIndexPage(){
 		$url = rtrim(trim($this->Uri), '/');
 		if(empty($url) || $url == '/' || $url == '/index.php'){
 			$this->Uri = '/index';
 		}
-    }
+	}
 
-    function Include($path, $require = false){
+	function Include($path, $require = false){
 		$p = $this->ClearUrl($path);
 		$f = "src/" . $p . ".php";
 		if($require == true){
@@ -61,7 +61,7 @@ class Router
 				$this->LoadClass($class, $method); // Load class
 			}
 		}
-    }
+	}
 
 	function LoadClass($path, $method){
 		if(!empty($path) || !empty($method))
@@ -87,7 +87,7 @@ class Router
 				throw new Exception("Create new controller file: " . $f, 1);
 			}
 		}
-    }
+	}
 
 	function ErrorPage()
 	{
