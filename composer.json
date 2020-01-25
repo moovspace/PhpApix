@@ -1,7 +1,7 @@
 {
-    "name": "moovspace/phpapi",
-    "description": "Php api server",
-    "type": "package",
+    "name": "moovspace/phpapix",
+    "description": "Php api router with composer autoload. See how to build a server side api routing system in PHP.",
+    "type": "library",
     "license": "MIT",
     "minimum-stability": "stable",
     "require": {
