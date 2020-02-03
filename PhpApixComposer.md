@@ -39,6 +39,9 @@ composer update
 composer dump-autoload -o
 ```
 
+### Import mysql databases and users from
+Import: (Import mysql databases)(https://github.com/moovspace/PhpApix/tree/master/sql)
+
 ### Create router
 nano index.php
 ```php
