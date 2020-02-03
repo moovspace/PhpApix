@@ -34,7 +34,7 @@ nano composer.json
 ```
 
 ### Composer autoload
-``bash
+```bash
 composer update
 composer dump-autoload -o
 ```
