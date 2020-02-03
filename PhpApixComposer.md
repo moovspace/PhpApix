@@ -25,10 +25,7 @@ nano composer.json
     "autoload": {
         "psr-4": {
             "MyApp\\": "src/"
-        },
-        "classmap": [
-            "src/"
-        ]
+        }
     }
 }
 ```
