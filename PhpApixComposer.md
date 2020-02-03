@@ -243,7 +243,7 @@ class ErrorPage
 ```
 
 ### Refresh composer vendor autoload
-``bash
+```bash
 # remove demo dir from vendor
 cd new-app
 rm -rf vendor/moovspace/phpapix/Api
