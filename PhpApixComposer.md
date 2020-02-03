@@ -242,6 +242,22 @@ class ErrorPage
 ?>
 ```
 
+### Apache2 Server .htaccess file
+Create in new-app project directory
+```bash
+RewriteEngine on
+RewriteBase /
+
+# Display already existing files and folders
+RewriteCond %{REQUEST_FILENAME} -d [OR]
+RewriteCond %{REQUEST_FILENAME} -l [OR]
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule (.*) $1 [NC,QSA,L]
+
+# Rewrite all urls
+RewriteRule ^(.*)/?$ index.php?url=$1 [NC,L,QSA]
+```
+
 ### Refresh composer vendor autoload
 ```bash
 # remove demo dir from vendor
