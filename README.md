@@ -38,7 +38,7 @@ composer dump-autoload -o
 
 ### Import mysql databases and users
  - From: [Import mysql databases](https://github.com/moovspace/PhpApix/tree/master/sql)
- - Or change MySql settings in: vendor/moovspace/phpapix/src/Settings/Config.php
+ - Or change MySql settings in: ***vendor/moovspace/phpapix/src/Settings/Config.php***
 
 ### Create router
 nano index.php
