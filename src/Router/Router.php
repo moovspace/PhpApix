@@ -41,6 +41,10 @@ class Router
 
 	function Set($route, $class, $method = 'Index', array $request_methods = ['GET', 'POST', 'PUT'])
 	{
+		if($route == '/'){
+			$route = '/index';
+		}
+		
 		$regex = preg_replace('/\{(.*?)\}/','[a-zA-z0-9_.-]+',$route); // Replace {slug} from url
 		$regex = str_replace("/", "\/", $regex);
 

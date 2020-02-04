@@ -64,8 +64,8 @@ try
 
 	/* ROUTES */
 
-	// Home page
-	$r->Set("/index", "Api/Home/Home", "Index");
+	// Home page: /index or /
+	$r->Set("/", "Api/Home/Home", "Index");
 
 	/* END ROUTES */
 
