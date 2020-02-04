@@ -63,4 +63,10 @@ final class Db extends Config
 		}
 	}
 }
+
+/*
+	// Mysql from static method (Db class)
+	$db = Db::getInstance();
+	$rows = $db->Pdo->query('select * from `users`')->fetchAll();
+*/
 ?>
