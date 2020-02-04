@@ -220,7 +220,7 @@ composer dump-autoload -o
 
 ## Apache2 Server .htaccess file
 Create in new-app project directory
-```bash
+```htaccess
 RewriteEngine on
 RewriteBase /
 
