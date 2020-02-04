@@ -15,18 +15,18 @@ composer init
 nano composer.json
 ```json
 {
-    "name": "username/new-app",
-    "description": "New app",
-    "type": "project",
-    "require": {
-        "moovspace/phpapix": "^4.0"
-    },
-    "minimum-stability": "stable",
-    "autoload": {
-        "psr-4": {
-            "MyApp\\": "src/"
-        }
-    }
+	"name": "username/new-app",
+	"description": "New app",
+	"type": "project",
+	"require": {
+		"moovspace/phpapix": "^4.0"
+	},
+	"minimum-stability": "stable",
+	"autoload": {
+		"psr-4": {
+			"MyApp\\": "src/"
+		}
+	}
 }
 ```
 
@@ -60,21 +60,21 @@ use PhpApix\Router\Router;
 
 try
 {
-    $r = new Router();
+	$r = new Router();
 
-    /* ROUTES */
+	/* ROUTES */
 
-    // Home page
-    $r->Set("/index", "Api/Home/Home", "Index");
+	// Home page
+	$r->Set("/index", "Api/Home/Home", "Index");
 
-    /* END ROUTES */
+	/* END ROUTES */
 
-    // Show ErrorPage or add yours with include('...')
-    $r->ErrorPage();
+	// Show ErrorPage or add yours with include('...')
+	$r->ErrorPage();
 }
 catch(Exception $e)
 {
-    echo json_encode(["errorMsg" => $e->getMessage(), "errorCode" => $e->getCode()]);
+	echo json_encode(["errorMsg" => $e->getMessage(), "errorCode" => $e->getCode()]);
 }
 ?>
 ```
@@ -100,17 +100,17 @@ use MyApp\Api\Home\Html;
 // Class controller
 class Home extends MysqlConnect
 {
-    function Index($router)
-    {    	
-    	Html::Header('Hello from main page | It is title');
+	function Index($router)
+	{
+		Html::Header('Hello from main page | It is title');
 
-    	?>
+		?>
 			<div class="box">
 				<h1> Hello from homepage! </h1>
 			</div>		
-        <?php
+		<?php
 
-        try
+		try
 		{
 			// Mysql query
 			// $this->pdo->query("SELECT * FROM ...");
@@ -121,8 +121,8 @@ class Home extends MysqlConnect
 		}
 
 
-        Html::Footer();
-    }
+		Html::Footer();
+	}
 }
 ?>
 ```
@@ -213,6 +213,11 @@ class Html
 ?>
 ```
 
+### Refresh composer vendor autoload classes
+```bash
+composer dump-autoload -o
+```
+
 ### Apache2 Server .htaccess file
 Create in new-app project directory
 ```bash
@@ -229,12 +234,21 @@ RewriteRule (.*) $1 [NC,QSA,L]
 RewriteRule ^(.*)/?$ index.php?url=$1 [NC,L,QSA]
 ```
 
-### Refresh composer vendor autoload
-```bash
-# remove demo dir from vendor
-cd new-app
-rm -rf vendor/moovspace/phpapix/Api
+### Nginx redirect all to index.php
+```php
+server {
+	...
 
-# update composer autoload
-composer dump-autoload -o
+	location / {
+		# Get file or folder or redirect uri to url param in index.php
+		try_files $uri $uri/ /index.php?url=$uri&$args;
+
+		# Get file or folder or redirect uri to index.html
+		# try_files $uri $uri/ /index.html;
+		# Get file or folder or error
+		# try_files $uri $uri/ =404;		
+	}
+
+	...
+}
 ```
