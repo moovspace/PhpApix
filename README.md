@@ -218,7 +218,51 @@ class Html
 composer dump-autoload -o
 ```
 
-## Apache2 Server .htaccess file
+# Route examples
+
+### Route with function
+Add route: Set(url, callback(), [calback params], [request methods])
+```php
+<?php
+	// GET Request
+	$r->Set('/route1', function($p) {
+		echo "WORKS WITH GET " . $p[0] . ' ' .$_GET['id'];
+	}, ['Param 1'], ['GET']);
+
+	// POST, PUT Request
+	$r->Set('/route2', function($p) {
+		return "WORKS WITH POST " . ' ' . implode(' ', $_POST);
+	}, ['function', 'params', 'here'], ['POST', 'PUT']);
+?>
+```
+
+### Route with class
+Add route: Set(url, class path, class method, [request methods])
+```php
+<?php
+	// GET Request
+	$r->Set("/api/user/{id}", "Api/User/User", "GetId", ['GET']);
+
+	// POST, PUT Request
+	$r->Set("/welcome/email/{id}", "Api/Sample/SampleClass", "Index", ['POST', 'PUT']);
+?>
+```
+
+### Route include with class
+Include route.php file with routes from controller folder
+```php
+<?php
+	// Include
+	$r->Include('Api/Sample/route');
+
+	// Require
+	$r->Include('Api/Sample/route', true);
+?>
+```
+
+# Server settings
+
+### Apache2 Server .htaccess file
 Create in new-app project directory
 ```sh
 RewriteEngine on
@@ -234,7 +278,7 @@ RewriteRule (.*) $1 [NC,QSA,L]
 RewriteRule ^(.*)/?$ index.php?url=$1 [NC,L,QSA]
 ```
 
-## Nginx redirect all to index.php
+### Nginx redirect all to index.php
 ```php
 server {
 	...
