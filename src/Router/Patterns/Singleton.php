@@ -1,14 +1,12 @@
-<?php 
+<?php
 declare(strict_types=1);
 
 namespace PhpApix\Router\Patterns;
 
 final class Singleton
 {
-	// private static $instance = null;
-
 	/**
-	 * Gets the instance
+	 * Gets the instance of class (only one per app)
 	 */
 	public static function getInstance(): self
 	{
@@ -16,7 +14,6 @@ final class Singleton
 
 		if (null === $instance) {
 			$instance = new self();
-			// static::$instance = new self();
 		}
 
 		return $instance;
