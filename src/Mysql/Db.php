@@ -62,6 +62,30 @@ final class Db extends Config
 			return null;
 		}
 	}
+
+	/**
+	 * Query
+	 * Secure mysql query
+	 *
+	 * $this->Query("SELECT * FROM users WHERE id = :id", array(':id' => 1));
+	 */
+	function Query($sql, $arr = array()){
+		try{
+			$r = $this->Pdo->prepare($sql);
+			$r->execute($arr);
+			$out = $r->fetchAll();
+			$lid = (int) $this->Pdo->lastInsertId();
+			if(!empty($out)){
+				return $out;
+			}else if($lid > 0){
+				return $lid;
+			}
+			return $r->rowCount();
+		}catch(Exception $e){
+			print_r($e);
+			throw new Exception ("Error sql " . $e->getMessage(), 1);
+		}
+	}
 }
 
 /*
