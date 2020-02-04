@@ -296,3 +296,10 @@ server {
 	...
 }
 ```
+
+### Apache2 htdocs permissions
+```sh
+# apache2
+chown -R www-data:username /path/to/new-app
+chmod -R 775 /path/to/new-app
+```
