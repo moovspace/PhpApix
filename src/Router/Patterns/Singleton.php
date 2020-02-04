@@ -1,7 +1,7 @@
 <?php 
 declare(strict_types=1);
 
-namespace PhpAPix\Patterns;
+namespace PhpApix\Router\Patterns;
 
 final class Singleton
 {

@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace PhpApix\Hooks;
+namespace PhpApix\Router\Hooks;
 
 class Hooks
 {

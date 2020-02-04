@@ -1,9 +1,10 @@
 <?php 
 declare(strict_types=1);
 
-namespace Patterns\Tests;
+namespace PhpApix\Router\Patterns\Tests;
 
-use Patterns\Singleton;
+use PhpApix\Router\Patterns\Singleton;
+
 use PHPUnit\Framework\TestCase;
 
 class SingletonTest extends TestCase
