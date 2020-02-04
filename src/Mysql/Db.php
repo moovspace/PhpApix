@@ -24,7 +24,7 @@ final class Db extends Config
 	private function __construct()
 	{
 		// Connet to database
-        $this->Pdo = self::Conn();
+		$this->Pdo = self::Conn();
 	}
 
 	private function __clone()
@@ -33,9 +33,9 @@ final class Db extends Config
 
 	protected function __wakeup()
 	{
-    }
+	}
 
-    final static function Conn(){
+	final static function Conn(){
 		try{
 			// pdo
 			$con = new PDO('mysql:host='.self::MYSQL_HOST.';port='.self::MYSQL_PORT.';dbname='.self::MYSQL_DBNAME.';charset=utf8mb4', self::MYSQL_USER, self::MYSQL_PASS);
