@@ -213,7 +213,7 @@ class Html
 ?>
 ```
 
-### Refresh composer vendor autoload classes
+### Refresh composer vendor classes autoload
 ```bash
 composer dump-autoload -o
 ```
