@@ -22,17 +22,15 @@ final class Singleton
 	/**
 	 * Is not allowed to call from outside to prevent from creating multiple instances,
 	 * to use the singleton, you have to obtain the instance from Singleton::getInstance() instead
-	 * protected or private
 	 */
-	protected function __construct()
+	private function __construct()
 	{
 	}
 
 	/**
-	 * prevent the instance from being cloned (which would create a second instance of it)
-	 * protected or private
+	 * prevent the instance from being cloned (which would create a second instance of it)	 
 	 */
-	protected function __clone()
+	private function __clone()
 	{
 	}
 
@@ -40,7 +38,7 @@ final class Singleton
 	 * prevent from being unserialized (which would create a second instance of it)
 	 * protected or private
 	 */
-	protected function __wakeup()
+	private function __wakeup()
 	{
 	}
 }

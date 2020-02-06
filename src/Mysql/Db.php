@@ -31,7 +31,7 @@ final class Db extends Config
 	{
 	}
 
-	protected function __wakeup()
+	private function __wakeup()
 	{
 	}
 
