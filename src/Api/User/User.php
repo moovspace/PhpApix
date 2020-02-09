@@ -1,5 +1,5 @@
 <?php
-/* Controller class without namespace !!! */
+namespace PhpApix\Api\User;
 
 // Import mysql pdo class
 use PhpApix\Mysql\MysqlConnect;
@@ -14,7 +14,7 @@ class User extends MysqlConnect
             // User name from url: /api/user/{id}
             $params = $router->GetParams($_SERVER['REQUEST_URI']);
             // {id} part
-            $username = $params[2]; 
+            $username = $params[2];
 
             // Mysql pdo
             $r = $this->Pdo->prepare("SELECT * FROM users WHERE username = :id");
@@ -32,7 +32,7 @@ class User extends MysqlConnect
 
             // Json header
             header('Content-Type: application/json; charset=UTF-8');
-            
+
             // Json string
             return json_encode(['id' => $id, 'error' => $error]);
         }

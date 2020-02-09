@@ -16,14 +16,16 @@ class Router
 		$this->IsIndexPage();
 	}
 
-	function IsIndexPage(){
+	function IsIndexPage()
+	{
 		$url = rtrim(trim($this->Uri), '/');
 		if(empty($url) || $url == '/' || $url == '/index.php'){
 			$this->Uri = '/index';
 		}
 	}
 
-	function Include($path, $require = false){
+	function Include($path, $require = false)
+	{
 		$p = $this->ClearUrl($path);
 		$f = "src/" . $p . ".php";
 		if($require == true){
@@ -33,7 +35,8 @@ class Router
 		}
 	}
 
-	function ValidRequestMethod($arr){
+	function ValidRequestMethod($arr)
+	{
 		if (!in_array($_SERVER['REQUEST_METHOD'], array_map('strtoupper', $arr))){
 			throw new Exception("Error Request Method! Allowed methods: " . implode(', ', $arr), 3);
 		}
@@ -44,7 +47,7 @@ class Router
 		if($route == '/'){
 			$route = '/index';
 		}
-		
+
 		$regex = preg_replace('/\{(.*?)\}/','[a-zA-z0-9_.-]+',$route); // Replace {slug} from url
 		$regex = str_replace("/", "\/", $regex);
 
@@ -62,12 +65,34 @@ class Router
 				}
 				exit;
 			}else{
-				$this->LoadClass($class, $method); // Load class
+				$this->LoadClassPath($class, $method); // Load class
 			}
 		}
 	}
 
-	function LoadClass($path, $method){
+	function ClearClassPath($path)
+	{
+		$x = str_replace('\\','/', rtrim($path, '/'));
+		return str_replace('/','\\',ltrim($path,'\\'));
+	}
+
+	function LoadClassPath($path, $method)
+	{
+		// Load full class path (use namespace path)
+		$path = $this->ClearClassPath($path);
+		// Create object My\\Name\\Space\\Class
+		$o = new $path();
+		// Run method
+		if(method_exists($o, $method)){
+			echo $o->$method($this);
+			exit;
+		}else{
+			throw new Exception("Create new controller (".$p.") method: " . $m, 2);
+		}
+	}
+
+	function LoadClass($path, $method)
+	{
 		if(!empty($path) || !empty($method))
 		{
 			$p = $this->ClearUrl($path); // Class Path
@@ -98,7 +123,8 @@ class Router
 		ErrorPage::Error404($this);
 	}
 
-	function GetParam($id = '{id}'){
+	function GetParam($id = '{id}')
+	{
 		if(!empty($this->CurrentRoute)){
 			$u = explode('/', $this->GetUrl($_SERVER['REQUEST_URI']));
 			$r = explode('/', $this->CurrentRoute);
@@ -110,16 +136,19 @@ class Router
 		}
 	}
 
-	function GetUrl($url){
+	function GetUrl($url)
+	{
 		return $this->Url = parse_url($url, PHP_URL_PATH);
 	}
 
-	function GetUrlQuery($url){
+	function GetUrlQuery($url)
+	{
 		parse_str(parse_url($url, PHP_URL_QUERY), $this->UrlQuery);
 		return $this->UrlQuery;
 	}
 
-	function GetParams($url){
+	function GetParams($url)
+	{
 		return $this->Params = explode('/', $this->ClearUrl($this->Uri));
 	}
 

@@ -3,5 +3,5 @@
 global $r;
 
 // Add route
-$r->Set("/welcome/email/{id}", "Api/Sample/SampleClass", "Index");
+$r->Set("/welcome/email/{id}", "PhpApix/Api/Sample/SampleClass", "Index");
 ?>

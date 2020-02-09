@@ -1,5 +1,6 @@
 <?php
 namespace PhpApix\Api\Error;
+
 use PhpApix\Api\Home\Html;
 
 class ErrorPage

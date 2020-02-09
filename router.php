@@ -8,7 +8,7 @@ try
     /* ROUTES */
 
     // Home page /index , default methods: GET, POST, PUT
-    $r->Set("/index", "Api/Home/Home", "Index");
+    $r->Set("/index", "PhpApix/Api/Home/Home", "Index");
 
     // Only GET
     $r->Set('/route1', function($p) {
@@ -21,10 +21,10 @@ try
     }, 'Func params here', ['POST', 'PUT']);
 
     // Api route
-    $r->Set("/api/user/{id}", "Api/User/User", "GetId");
+    $r->Set("/api/user/{id}", "PhpApix/Api/User/User", "GetId");
 
     // Add route: url, class path, class method
-    $r->Set("/welcome/email/{id}", "Api/Sample/SampleClass", "Index");
+    $r->Set("/welcome/email/{id}", "PhpApix/Api/Sample/SampleClass", "Index");
 
     // Or load from controller route.php file
     // $r->Include('Api/Sample/route');

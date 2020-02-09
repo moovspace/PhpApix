@@ -9,6 +9,8 @@ use PhpApix\Settings\Config;
 
 final class Db extends Config
 {
+	public $Pdo = null;
+	
 	// Singleton
 	public static function getInstance(): self
 	{

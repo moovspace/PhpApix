@@ -1,5 +1,5 @@
 <?php
-/* Controller class without namespace !!! */
+namespace PhpApix\Api\Home;
 
 // Import mysql pdo class
 use PhpApix\Mysql\MysqlConnect;
