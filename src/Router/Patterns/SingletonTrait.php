@@ -20,14 +20,16 @@ trait SingletonTrait {
 	protected function __clone()
 	{
 	}
-	
+
 	protected function __wakeup()
 	{
 	}
 }
 
 // How to use it
-// class Singleton {
-// 	use Singleton;
+// class SingletonClass
+// {
+// 	use SingletonTrait;
+//
 // }
 ?>
