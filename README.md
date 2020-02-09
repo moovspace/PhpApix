@@ -65,7 +65,7 @@ try
 	/* ROUTES */
 
 	// Home page: /index or /
-	$r->Set("/", "Api/Home/Home", "Index");
+	$r->Set("/", "PhpApix/Api/Home/Home", "Index");
 
 	/* END ROUTES */
 
