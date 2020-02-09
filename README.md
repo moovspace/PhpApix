@@ -1,4 +1,4 @@
-# PhpApix router with composer
+# PhpApix router with composer (7.0.0)
 See how to add a router to a new project in php.
 
 ### Create composer project
@@ -11,7 +11,7 @@ cd new-app
 composer init
 ```
 
-### Composer file with your namespace MyApp
+### Composer file with your namespace MyApp (7.0.0)
 nano composer.json
 ```json
 {
@@ -19,7 +19,7 @@ nano composer.json
 	"description": "New app",
 	"type": "project",
 	"require": {
-		"moovspace/phpapix": "^4.0"
+		"moovspace/phpapix": "^7.0"
 	},
 	"minimum-stability": "stable",
 	"autoload": {

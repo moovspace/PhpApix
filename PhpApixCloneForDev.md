@@ -1,4 +1,4 @@
-# PhpApix
+# PhpApix (7.0.0)
 Php api router with composer autoload. See how to build a server side api routing system in PHP.
 
 ### How to use PhpApix with composer
@@ -95,7 +95,7 @@ Add route: Set(url, callback(), [calback params], [request methods])
 ?>
 ```
 
-### Route with class
+### Route with class (7.0.0)
 Add route: Set(url, class path, class method, [request methods])
 ```php
 <?php
@@ -119,7 +119,7 @@ Include route.php file with routes from controller folder
 ?>
 ```
 
-## Router controller class
+## Router controller class (7.0.0)
 nano src/Api/Sample/SampleClass.php
 ```php
 <?php
