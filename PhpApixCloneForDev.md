@@ -1,7 +1,7 @@
 # PhpApix
 Php api router with composer autoload. See how to build a server side api routing system in PHP.
 
-### How to use PhpApix with composer 
+### How to use PhpApix with composer
 See: [How to use PhpApix with composer](https://github.com/moovspace/PhpApix/blob/master/PhpApixComposer.md)
 
 ### Clone or download latest release - dev sample ***(install git, lamp or lemp server)***
@@ -65,7 +65,7 @@ try
 	$r = new Router();
 
 	// Homepage /index route
-	$r->Set("/index", "Api/Home/Home", "Index");
+	$r->Set("/index", "PhpApix/Api/Home/Home", "Index");
 
 	/* Routes here */
 
@@ -100,10 +100,10 @@ Add route: Set(url, class path, class method, [request methods])
 ```php
 <?php
 	// GET Request
-	$r->Set("/api/user/{id}", "Api/User/User", "GetId", ['GET']);
+	$r->Set("/api/user/{id}", "PhpApix/Api/User/User", "GetId", ['GET']);
 
 	// POST, PUT Request
-	$r->Set("/welcome/email/{id}", "Api/Sample/SampleClass", "Index", ['POST', 'PUT']);
+	$r->Set("/welcome/email/{id}", "PhpApix/Api/Sample/SampleClass", "Index", ['POST', 'PUT']);
 ?>
 ```
 
@@ -111,7 +111,7 @@ Add route: Set(url, class path, class method, [request methods])
 Include route.php file with routes from controller folder
 ```php
 <?php
-	// Include
+	// Include path from /src folder
 	$r->Include('Api/Sample/route');
 
 	// Require
@@ -119,10 +119,12 @@ Include route.php file with routes from controller folder
 ?>
 ```
 
-## Router controller class ***(without namespace)***
+## Router controller class
 nano src/Api/Sample/SampleClass.php
 ```php
 <?php
+namespace PhpApix\Api\Sample;
+
 // Import mysql pdo class
 use PhpApix\Mysql\MysqlConnect;
 
@@ -162,7 +164,7 @@ class SampleClass extends MysqlConnect
 ?>
 ```
 
-## Custom class for controller ***(with namespace)***
+## Custom class for controller
 nano src/Api/Sample/Email.php
 ```php
 <?php
