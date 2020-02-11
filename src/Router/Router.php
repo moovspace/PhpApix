@@ -42,6 +42,14 @@ class Router
 		}
 	}
 
+	function Redirect($route = '/', $redirect = '/')
+	{
+		if(!empty($route) && !empty($redirect) && $this->Uri == $route){
+			header('Location: '.$redirect);
+			exit;
+		}
+	}
+
 	function Set($route, $class, $method = 'Index', array $request_methods = ['GET', 'POST', 'PUT'])
 	{
 		if($route == '/'){
