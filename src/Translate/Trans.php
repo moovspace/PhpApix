@@ -1,92 +1,98 @@
 <?php
 namespace PhpApix\Translate;
 use \Exception;
-use PhpApix\Translate\Lang;
 
 /**
- * Trans
- *
- * Load file with translated strings *
- * File name:  Lang/messages-pl.trans
- * File format:
- * UNIQUE_ID| Translated string here
+ * Translation class
+ * Load file translate-LANG.lng
+ * Load default file translate-en.lng
  */
 class Trans
 {
-    protected $Default = 'en';
-	protected $Messages = '';
-
-	function __construct()
-	{
-        $this->SetLang($this->LoadSess());
-    }
+	public $Json = [];
 
 	/**
-	 * LoadFile Load messages from file
+	 * Load translate json file
+	 * File: translate-{lang}.lng
+	 * {"EMAIL_ERROR": "Podaj poprwany adres e-mail!", "PASS_ERROR": "Podaj swoje hasło!"}
 	 *
-	 * @param string $path Path to file
-	 * @param string $lang 2 letter strings: pl, en
-	 * @return void
+	 * Change lang with (GET, SESSION):
+	 * /login?lang=pl
+	 * $_SESSION['lang'] = 'pl'
+	 *
+	 * @param string $folder_path Absolute path to folder
+	 * @param string $lang Language short code: pl, en ...
 	 */
-	function LoadFile($path){
-		if(file_exists($path)){
-			$this->Messages = file_get_contents($path);
+	function __construct($folder_path = '/src/Web/Auth/Lang', $lang = 'en')
+	{
+		// Load lang code
+		$lang = self::LangAutoload($lang);
+
+		// Load file
+		$folder_path = rtrim($folder_path,'/');
+		$file = $_SERVER['DOCUMENT_ROOT'].$folder_path.'/translate-'.$lang.'.lng';
+
+		if(file_exists($file))
+		{
+			$this->Json = json_decode(file_get_contents($file), true);
+			// print_r($this->Json);
+		}
+		else
+		{
+			// Default file
+			$file = $_SERVER['DOCUMENT_ROOT'].$folder_path.'/translate-en.lng';
+
+			if(file_exists($file))
+			{
+				$this->Json = json_decode(file_get_contents($file), true);
+			}
+			else
+			{
+				throw new Exception("Translation file does not exists.", 1);
+			}
+		}
+
+		// Json format error
+		if(!empty(json_last_error_msg()) && JSON_ERROR_NONE != json_last_error_msg()){
+			throw new Exception("Translate .lng file json format error: " . json_last_error_msg(), 3);
+		}
+	}
+
+	/**
+	 * Load language code from SESSION or GET
+	 *
+	 * @return string return language code: en
+	 */
+	static function LangAutoload($lang = 'en')
+	{
+		// Auto change language from GET lang param
+		if(!empty($_GET['lang'])){
+			$lang = $_SESSION['lang'] = $_GET['lang'];
 		}else{
-			throw new Exception("Error translate file path", 1);
+			// Auto change language from SESSION lang param
+			if(!empty($_SESSION['lang'])){
+				$lang = $_SESSION['lang'];
+			}
 		}
+		return strtolower($lang);
 	}
 
 	/**
-	 * Find() search text translation in file
+	 * Get KEY_ID_NAME transpaltion
 	 *
-	 * @param  string $txt  Unique text id
-	 * @param  string $file File name default 'messages' -> messages-en.trans
-	 * @return string       Return translated string or empty if string does not exist
+	 * @param string $id Unique json array key name
+	 * @return void
 	 */
-	function Find($txt = '')
+	function Get($id)
 	{
-		preg_match('/('.$txt.')\|(.+)\n/', $this->Messages, $match);
-		if(!empty($match[0])){
-			return rtrim(ltrim(end(explode("|", $match[0]))),"\r");
+		if(array_key_exists($id, $this->Json))
+		{
+			return $this->Json[$id];
 		}
-		return 'ADD_TRANSLATE_ID: '.$txt;
+		else
+		{
+			throw new Exception("Error translation hash: " . $id, 2);
+		}
 	}
-
-	/**
-	 * SetLang Set current languge code
-	 *
-	 * @param string $lang Language code 2 characters
-	 * @return void
-	 */
-    function SetLang($lang = 'en'){
-		$lang = Lang::Valid($lang);
-        if(!empty($lang)){
-			$_SESSION['app']['language'] = strtolower($lang);
-        }else{
-            return $this->Default;
-        }
-	}
-
-	/**
-	 * GetLang Get current code language
-	 *
-	 * @return void
-	 */
-	function GetLang(){
-		return strtolower($_SESSION['app']['language']);
-	}
-
-	/**
-	 * LoadSess Get language code from session
-	 *
-	 * @return void
-	 */
-	protected function LoadSess(){
-        if(!empty($_SESSION['app']['language'])){
-            return strtolower($_SESSION['app']['language']);
-        }else{
-            return $this->Default;
-        }
-    }
 }
 ?>
